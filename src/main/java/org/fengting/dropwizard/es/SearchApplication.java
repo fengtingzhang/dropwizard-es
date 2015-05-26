@@ -7,6 +7,7 @@ import org.fengting.dropwizard.es.config.SearchConfiguration;
 import org.fengting.dropwizard.es.health.SearchHealthCheck;
 import org.fengting.dropwizard.es.manager.SearchManager;
 import org.fengting.dropwizard.es.resource.SearchIndexResource;
+import org.fengting.dropwizard.es.resource.SearchQueryResource;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -31,10 +32,15 @@ public class SearchApplication extends Application<SearchConfiguration> {
         SearchManager searchManager = new SearchManager(config);
         environment.lifecycle().manage(searchManager);
 
-        logger.info("Running the application");
+        logger.info("Adding Index Resource");
         final SearchIndexResource indexResource = new SearchIndexResource(searchManager);
         environment.jersey().register(indexResource);
 
+        logger.info("Adding Query Resource");
+        final SearchQueryResource queryResource = new SearchQueryResource(searchManager);
+        environment.jersey().register(queryResource);
+
+        logger.info("Adding Health Check");
         final SearchHealthCheck esHealthCheck = new SearchHealthCheck(searchManager);
         environment.healthChecks().register("elasticsearch", esHealthCheck);
     }
