@@ -1,0 +1,14 @@
+[
+  {
+    "user": "kimchy",
+    "postDate": "2013-01-30",
+    "another": "anoterfield",
+    "message": "trying out Elasticsearch"
+  },
+  {
+    "user": "kimchy",
+    "postDate": "2013-01-30",
+    "another": "anoterfield",
+    "message": "trying out Elasticsearch"
+  }
+]
