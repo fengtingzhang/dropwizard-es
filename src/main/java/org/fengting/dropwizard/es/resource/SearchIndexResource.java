@@ -37,7 +37,7 @@ public class SearchIndexResource {
         //byte[] json = getTestDataFromJackson(new Tweet("kimchy", new Date(), "trying out ElasticSearch"));
         JSONArray indexResults = new JSONArray();
         try {
-            JSONArray data = getTestDataFromString();
+            JSONArray data = getDataFromFile();
             for (int i = 0; i < data.length(); i++) {
                 IndexResponse response = manager.obtainClient().prepareIndex("twitter", "tweet")
                         .setSource(data.get(i).toString())
@@ -59,7 +59,7 @@ public class SearchIndexResource {
         return indexResults.toString();
     }
 
-    private JSONArray getTestDataFromString() throws IOException {
+    private JSONArray getDataFromFile() throws IOException {
         InputStream is = getClass().getClassLoader().getResourceAsStream("data.json");
         BufferedReader streamReader = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
         StringBuilder responseStrBuilder = new StringBuilder();
