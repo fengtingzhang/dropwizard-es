@@ -11,7 +11,7 @@
     <properties>
         <dropwizard.version>0.8.1</dropwizard.version>
         <jersey.version>2.27</jersey.version>
-        <elasticsearch.version>1.5.1</elasticsearch.version>
+        <elasticsearch.version>6.5.4</elasticsearch.version>
         <slf4jVersion>1.6.1</slf4jVersion>
     </properties>
 
